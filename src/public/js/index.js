@@ -1,6 +1,9 @@
+
+
 const socket = io();
 let user 
 let chatBox     = document.querySelector('#chatBox')
+
 
 
 
@@ -25,6 +28,8 @@ chatBox.addEventListener('keyup', evt => {
             chatBox.value = ''
         }
     }
+
+    
 })
 
 socket.on('messageLogs', data => {
