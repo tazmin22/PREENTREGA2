@@ -11,6 +11,7 @@ const productsRouter = require ("./routes/products.router.js")
 const cartsRouter = require ("./routes/carts.router.js")
 const chatRouter = require ("./routes/chatRouter.js")
 const { connectDb } = require('./config/index.js')
+//const { messagesModel } = require('./models/messages.model.js')
 
 
 
@@ -46,6 +47,8 @@ const httpServer = app.listen(port, () => {
 
 const io = new Server(httpServer)
 
+//messagesModel
+
 //const MesaggeService = new MessageDaoMongo()
 
 let messagesArray = [] //messageModel.find()
@@ -57,4 +60,6 @@ io.on('connection', socket => {
         messagesArray.push(data)
         io.emit('messageLogs', messagesArray)
     })
+
+    
 })
