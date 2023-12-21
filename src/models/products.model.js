@@ -20,9 +20,7 @@ const productSchema = new Schema({
         
     },
     code: {
-        type: Number,
-        required: true,
-        unique: true
+        type: Number
     },
     thumbnai: {
         type: String,
