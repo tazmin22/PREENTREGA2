@@ -22,4 +22,4 @@ class MenssageDaoMongo{
       }
 }
 
-module.exports= MenssageDaoMongo
+module.exports={ MenssageDaoMongo}

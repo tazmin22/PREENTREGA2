@@ -11,7 +11,8 @@ const productsRouter = require ("./routes/products.router.js")
 const cartsRouter = require ("./routes/carts.router.js")
 const chatRouter = require ("./routes/chatRouter.js")
 const { connectDb } = require('./config/index.js')
-//const { messagesModel } = require('./models/messages.model.js')
+const {MenssageDaoMongo} = require ('./daos/Mongo/messagesManagerMongo.js')
+
 
 
 
@@ -49,16 +50,17 @@ const io = new Server(httpServer)
 
 //messagesModel
 
-//const MesaggeService = new MessageDaoMongo()
+const MesaggeService = new MenssageDaoMongo;
 
-let messagesArray = [] //messageModel.find()
+//let messagesArray = [] //messageModel.find()
 
 io.on('connection', socket => {
     console.log('Nuevo cliente conectado')
 
     socket.on('message', data => {
-        messagesArray.push(data)
-        io.emit('messageLogs', messagesArray)
+      MesaggeService.getMessages//(data)
+      console.log(MesaggeService.getMessages)
+        io.emit('messageLogs', MesaggeService)
     })
 
     
