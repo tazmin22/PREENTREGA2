@@ -112,5 +112,26 @@ router
 });
 
 
+router
+.post("/", async (req, res) => {
+  try {
+    const { title, price, code } = req.body;
+
+    const product = await productManager.addProduct({ title, price, code });
+
+    const products = await productManager.getProducts();
+
+    // Emitimos a todos la lista actualizada
+    req.app.get("io").sockets.emit("products", products);
+
+    return res.json({ success: true, data: product });
+  } catch (error) {
+    console.log(error);
+
+    const code = error.statusCode ?? 500;
+    return res.status(code).json({ success: false, error: error.message });
+  }
+});
+
 
 module.exports = router

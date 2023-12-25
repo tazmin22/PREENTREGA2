@@ -15,7 +15,7 @@ router.get('/chat', (req,res) =>{
     })
   });
 
-  router.get ("/chat/chat", async (req,res)=> {
+  router.get ("/chat", async (req,res)=> {
     try{
       const message = await messageService.getMessages();
       res.status(200).send({

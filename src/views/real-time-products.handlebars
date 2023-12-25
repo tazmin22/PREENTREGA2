@@ -1,0 +1,64 @@
+<div>
+
+    <h1 class="title">Lista de productos (En tiempo real)</h1>
+    <table class="product-list">
+        <tr>
+            <th>Título</th>
+            <th>Precio</th>
+            <th>Code</th>
+        </tr>
+
+        <tbody id="products_table_body">
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<div>
+    <h4>Formulario mediante POST</h4>
+    <div>
+        <form id="add_product_api">
+            <input type="text" name="title" placeholder="Title" />
+            <input type="number" name="price" placeholder="Price" />
+            <input type="text" name="code" placeholder="code" />
+            <button> Enviar! </button>
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <h4>Formulario mediante Web Sockets</h4>
+    <div>
+        <form id="add_product_web_sockets">
+            <input type="text" name="title" placeholder="Title" />
+            <input type="number" name="price" placeholder="Price" />
+            <input type="text" name="code" placeholder="code" />
+            <button> Enviar! </button>
+        </form>
+    </div>
+</div>
+
+
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .product-list {
+        width: 100%;
+    }
+</style>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/realTimeProducts.js"></script>

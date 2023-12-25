@@ -12,8 +12,9 @@ const cartsRouter = require ("./routes/carts.router.js")
 const chatRouter = require ("./routes/chatRouter.js")
 const { connectDb } = require('./config/index.js')
 const {MenssageDaoMongo} = require ('./daos/Mongo/messagesManagerMongo.js')
+//const productsManager = require('./daos/File/productsManager.js')
 
-
+const productsManager = new PManager
 
 
 const app = express()
@@ -60,8 +61,26 @@ io.on('connection', socket => {
     socket.on('message', data => {
       MesaggeService.getMessages//(data)
       console.log(MesaggeService.getMessages)
-        io.emit('messageLogs', MesaggeService)
+        //io.emit( MesaggeService)
+         io.emit('messageLogs', MesaggeService)
+
+
     })
 
+
+
+
+    socket.on("add-product", async (product) => {
+      try {
+        await productManager.addProduct(product);
+        const products = await productManager.getProducts();
+  
+        io.sockets.emit("products", products);
+      } catch (error) {
+        console.log(error);
+        socket.emit("add-product-error", error.message);
+      }
+    });
+  });
+
     
-})
